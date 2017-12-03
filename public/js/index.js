@@ -8,11 +8,6 @@ socket.on('connect', function(){
   //   text: 'Hey. This is Itay.'
   // });
 
-    socket.emit('createMessage', {
-      from: 'Itay',
-      test: 'Hey you!',
-      //createAt: 'december 17'
-    });
 
 });
 

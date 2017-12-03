@@ -18,18 +18,17 @@ io.on('connection', (socket) =>{
   socket.emit('newEmail', {
     from: 'mike@example.com',
     test: 'Hey, how are you todat?',
-    createAt: 123
+    createdAt: 123
   });
-
-   socket.emit('newMessage', {
-     from: 'Itay',
-     test: 'Hey you!',
-     createAt: 123123
-   });
 
    socket.on('createMessage', (message) =>{
      console.log ('message created', message);
-   })
+     io.emit('newMessage', {
+       from: message.from,
+       text: message.text,
+       createdAt: new Date().getTime()
+     });
+   });
 
   socket.on('disconnect', () =>{
     console.log ('User was disconnected');
